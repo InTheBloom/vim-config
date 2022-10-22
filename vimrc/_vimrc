@@ -1,0 +1,45 @@
+set belloff=all
+set directory=~/vimbackup
+set backupdir=~/vimbackup
+" 実際に使うときは~/vimbackupを作ってください
+set noundofile
+set number
+set cursorline
+set cursorcolumn
+set hidden
+set splitbelow
+set termwinsize=15x0
+set noequalalways
+set autoindent
+" 前の行のインデントを受け継ぐ
+set smartindent
+" c言語風のキーワードに反応して字下げを行う
+set breakindent
+set textwidth=0
+set title
+set laststatus=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set nolist
+set listchars=tab:>_,trail:␣,nbsp:%,eol:↲
+set t_Co=256
+colorscheme industry
+" expandtabとlistは必要に応じて使ってください
+
+let g:netrw_banner=0
+let g:netrw_liststyle=1
+let g:netrw_browse_split=4
+let g:netrw_preview=1
+let g:netrw_winsize=90
+let g:netrw_fastbrowse=1
+
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#a3e4a6 ctermbg=145
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#ea9dc6 ctermbg=151
+let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=1
+
+hi SpecialKey ctermfg=16 guifg=#000000
