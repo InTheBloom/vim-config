@@ -25,6 +25,7 @@ set noexpandtab
 set nolist
 set listchars=tab:>_,trail:␣,nbsp:%,eol:↲
 set t_Co=256
+syntax on
 colorscheme industry
 " expandtabとlistは必要に応じて使ってください
 
