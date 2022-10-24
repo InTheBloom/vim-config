@@ -16,6 +16,8 @@ set smartindent
 " c言語風のキーワードに反応して字下げを行う
 set breakindent
 set textwidth=0
+autocmd FileType text setlocal textwidth=0
+" 勝手にtextwidthが変えられて改行が発生してしまう現象の対処
 set title
 set laststatus=2
 set tabstop=4
