@@ -13,6 +13,7 @@ set noequalalways
 set autoindent
 " 前の行のインデントを受け継ぐ
 set smartindent
+set cindent
 " c言語風のキーワードに反応して字下げを行う
 set breakindent
 set textwidth=0
