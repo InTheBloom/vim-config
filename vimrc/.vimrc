@@ -32,8 +32,10 @@ set wildmenu wildmode=list:full
 set ignorecase
 
 if has('win32') || has('win64')
+    set shell=pwsh.exe
 else
-    set t_Co=256 " Non-windows
+    set shell=/bin/bash " Non-windows
+    set t_Co=256
 endif
 
 colorscheme industry
@@ -54,7 +56,11 @@ let g:netrw_liststyle=0
 let g:netrw_fastbrowse=1
 
 " ハイライト設定
-hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=242
+if has('win32') || has('win64')
+    hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=8
+else
+    hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=242
+endif
 hi clear CursorLineNr
 
 " 背景透明化

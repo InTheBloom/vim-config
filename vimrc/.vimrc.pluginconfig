@@ -1,8 +1,8 @@
 " プラグインマネージャーのやつ(jetpack)
-let g:jetpack_download_method = 'curl'
+"let g:jetpack_download_method = 'curl'
 packadd vim-jetpack
 call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
+Jetpack 'tani/vim-jetpack', {'opt': 1}
 Jetpack 'prabirshrestha/vim-lsp'
 Jetpack 'mattn/vim-lsp-settings'
 Jetpack 'prabirshrestha/asyncomplete.vim'

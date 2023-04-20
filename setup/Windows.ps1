@@ -1,5 +1,24 @@
-New-Item -ItemType Directory -Force $HOME\.tmp\vimbackup
-Copy-Item -Path ../vimrc/.vimrc -Destination ~/_vimrc -Force
-Copy-Item -Path ../vimrc/.vimrc.expandcommands -Destination ~/.vimrc.expandcommands -Force
-Copy-Item -Path ../vimrc/.vimrc.pluginconfig -Destination ~/.vimrc.pluginconfig -Force
-curl -fLo %USERPROFILE%\vimfiles\pack\jetpack\opt\vim-jetpack\plugin\jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+New-Item -ItemType Directory -Force $env:USERPROFILE\.tmp\vimbackup
+Copy-Item -Path ..\vimrc\.vimrc -Destination $env:USERPROFILE\_vimrc -Force
+Copy-Item -Path ..\vimrc\.vimrc.pluginconfig -Destination $env:USERPROFILE\.vimrc.pluginconfig -Force
+
+# .vimrc.expandcommnds に対してInTheBloom_Libraryのパスを加える。そのようなディレクトリが存在しなければパスを使う行をコメントアウト
+$file = "..\vimrc\.vimrc.expandcommands"
+$oldString = "LIBRARY_PATH"
+$newString = ((Get-ChildItem -Path C:\users -Directory -Recurse | Where-Object {$_.Name -eq "InTheBloom_Library"}) | Select-Object -First 1).FullName
+(Get-Content $file) | Foreach-Object {$_ -replace $oldString, $newString} | Set-Content $file
+(Get-Content -Path $file) -replace "oldstring", "newstring" | Set-Content -Path $env:USERPROFILE/.vimrc.expandcommands
+
+if ([string]::IsNullOrEmpty($newString)) {
+    $fileContent = Get-Content -Path $file
+        $newContent = foreach ($line in $fileContent) {
+            if ($line -match $oldString) {
+                '" ' + $line
+            } else {
+                $line
+            }
+        }
+    $newContent | Set-Content -Path $file
+}
+
+curl -fLo $env:USERPROFILE\vimfiles\pack\jetpack\opt\vim-jetpack\plugin\jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
