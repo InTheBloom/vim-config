@@ -1,0 +1,28 @@
+" textファイルの自動折りたたみ無効化
+autocmd FileType text setlocal textwidth=0
+
+" 拡張子によるテンプレート自動読み込み
+autocmd BufNewFile,BufRead *.c if getfsize(@%) <= 0 | 0read ~/dev/git/InTheBloom_Library/src/template.c | endif
+
+" tab文字駆逐コマンド
+command! -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
+autocmd BufNewFile,BufRead *.c silent! Tabkill
+
+" 自動cindent切り替え
+autocmd BufNewFile,BufRead * setlocal nocindent
+autocmd BufNewFile,BufRead *.c setlocal cindent
+
+" 自動ライブラリオープン
+command Lib tabnew | e ~/dev/git/InTheBloom_Library/src
+
+" LaTeXのオートコンパイル
+function s:_latex(...)
+    let open_pdf = a:0 > 0 && a:1 != ''
+    let cmd = '!platex % && platex % && platex % && dvipdfmx %<.dvi'
+    if open_pdf
+        let cmd .= ' && xdg-open %<.pdf'
+    endif
+    execute cmd
+endfunction
+
+command -nargs=? Latex call s:_latex(<f-args>)

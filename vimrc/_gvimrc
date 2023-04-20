@@ -1,5 +1,0 @@
-set columns=110
-set lines=26
-set guifont=FixedSys:h17
-set guioptions-=T
-set guioptions-=m

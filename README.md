@@ -1,35 +1,41 @@
-変更点
-- キーバインド変更(IMEの設定から、変換キーを「IMEオフ」、無変換キーを「IMEオン」にしたのと、changekeyを使ってCapsLockをEscに割り当てた。)
-- \_vimrcと\_gvimrcにいくらか変更を加えた。
-以下内容(特に記載がない場合\_vimrcへ加えたものとします。)
+# vimセットアップツール
 
-	- フォントサイズの変更(\_gvimrcへ`set guifont=FixedSys:h17`)
-	- ウィンドウサイズの変更(\_gvimrcへ`set columns=110 set lines=26`)
-	- gvimでメニューバーとかを消し去る(\_gvimrcへ`set guioptions-=T`と`set guioptions-=m`)
-	- 行番号の表示(`set number`)
-	- バッファ未保存時のバッファ移動許可(`set hidden`)
-	- デフォルトのシェルをPowerShell7に変更(`set shell=pwsh`)
-	- ビープ音オフ(`set belloff=all`)
-	- バックアップファイルを~/vimbackupに保存するようにした(set directory=~/vimbackup`と`set backupdir=~/vimbackup`)
-	- undoの履歴を持ち越さないようにした(`set noundofile`)
-	- split実行時に下側に分割(`set splitbelow`)
-	- terminalモード実行時、ターミナルを15行で起動(`set termwinsize=15x0`)
-	- windowレイアウトを自動制御しないようにする(`set noequalalways`)
-	- 前の行のインデントを自動的に引き継ぐ(`set autoindent`)
-	- c言語のキーワードなどに反応してインデントを行う(`set smartindent`)
-    - 自動改行の目安文字数を取っ払った(`set textwidth=0`)
-    - ターミナルのウィンドウフレームの所に現在編集中のファイルの名前を書くらしい(`set title`)
-    - 編集中のバッファの下にファイルパスを書くらしい(`set laststatus=2`)
-    - タブ文字を半角4文字分の幅で表示(`set tabstop=4`)
-    - インサートモードで半角なんも自分で一セットにするかって感じかも(`set softtabstop=4`)
-    - コマンドで挿入するインデントに関しても半角4文字分にするらしい(`shiftwidth=4`)
-    - ~~tabキーでのインデントを空白に置き換える(`set expandtab`)~~現在使用検討中の段階(ノートパソコンのみ導入)
-    - 不可視文字を表示(`set list`)
-    - 不可視文字の置換設定(`set listchars=tab:>\_,trail:␣,nbsp:%,eol:↲`)
-    - vimのカラースキームを変更(`colorscheme industry`)
-	- netrwの上についてる説明のテキストを非表示にする(`let g:netrw\_banner=0`)
-	- netrwの初期のディレクトリ表示を設定(`let g:netrw\_liststyle=1`)
-	- netrwでファイルを開くときに使用するウィンドウと開き方の設定(この設定は前使っていたウィンドウを使用する)(`let g:netrw\_browse\_split=4`)
-	- netrwのプレビューの設定(`let g:netrw\_preview=1`)
-	- 新しくバッファを開くときにウィンドウのサイズを比率で指定(`let g:netrw\_winsize=90`)
-    - netrwに表示されるファイルリストをローカルの時常時更新する(`let g:netrw\_fastbrowse=1)
+## これは何か
+私が現在つかっているvimの設定をまとめて、いろいろなところで使えるようにまとめたものです。
+また、windowsとlinux向けに一発で初期設定を終わらせるスクリプトを入れておきました。
+linux環境ではbashを、windows環境ではpowershellを想定しています。
+
+## 特徴
+- プラグインマネージャーに[jetpack-vim](https://github.com/tani/vim-jetpack)を使用。面倒くさいプラグイン関連の処理は全部丸投げしてます。
+- vimscriptが多少読める人なら色々カスタマイズする土台にいいかも(？)
+- なるたけプラットフォーム依存しないように気をつけました。(gitは使ってないはずなので、curlさえ使えればフルインストール可能です。)
+
+## 使い方
+setupディレクトリにあるスクリプトを実行してください。linuxなら`Linux.sh`、windowsなら`Windows.ps1`です。
+
+## 注意点
+- 自己責任で使用してください。
+- 完全に私用のチューニングなので、意味わからない設定とかがあるかもしれないです。
+- スクリプトはカレントディレクトリをスクリプトのあるディレクトリに移してから実行してください。(相対パスを利用しているからです。)
+- ~がホームディレクトリだという前提でスクリプトを組んでいます。
+
+---
+
+# vim setup tool(by google translate)
+
+## what is this
+This is a summary of the vim settings that I am currently using so that they can be used in various places. I also included a script to complete the initial settings in one shot for windows and linux. It assumes bash in the linux environment and powershell in the windows environment.
+
+## feature
+- Use jetpack-vim as plugin manager. All troublesome plug-in related processing is thrown away.
+- If you can read vimscript a little, it may be a good base for customizing various things (?)
+- I tried to be as platform independent as possible. (Since git should not be used, full installation is possible as long as you can use curl.)
+
+## Usage
+Execute the script in the setup directory. `Linux.sh` for linux, `Windows.ps1` for windows.
+
+## important point
+- Please use at your own risk.
+- This is a completely private tuning, so there may be settings that don't make sense.
+- Execute the script after moving the current directory to the directory where the script is located. (Because you are using a relative path.)
+- The script is built on the assumption that ~ is the home directory.
