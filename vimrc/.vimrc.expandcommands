@@ -22,8 +22,9 @@ function s:_latex(...)
     if open_pdf
         if has('win32') || has('win64')
             let cmd .= ' && start %<.pdf'
-        lese
+        else
             let cmd .= ' && xdg-open %<.pdf'
+        endif
     endif
     execute cmd
 endfunction
