@@ -55,6 +55,7 @@ let g:netrw_fastbrowse=1
 
 " ハイライト設定
 hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=242
+hi clear CursorLineNr
 
 " 背景透明化
 hi Normal ctermbg=NONE
