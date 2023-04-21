@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 mkdir -p ~/.tmp/vimbackup
 cp -f ../vimrc/.vimrc ../vimrc/.vimrc.pluginconfig ~/
 
@@ -37,4 +36,5 @@ output_file="~/.vimrc.expandcommands"
 # ファイル内の文字列を置換して、置換後文字列が空の場合にはマーカーを付加する
 sed "s/$search/$replace/g;/${replace:+\`/!b};/${replace:+\`/i $marker}" "$source_file" > "$output_file"
 
-curl -fLo ~/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

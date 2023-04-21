@@ -21,4 +21,5 @@ if ([string]::IsNullOrEmpty($newString)) {
     $newContent | Set-Content -Path $file
 }
 
-curl -fLo $env:USERPROFILE\vimfiles\pack\jetpack\opt\vim-jetpack\plugin\jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/vimfiles/autoload/plug.vim -Force

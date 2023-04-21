@@ -5,7 +5,7 @@ autocmd FileType text setlocal textwidth=0
 autocmd BufNewFile,BufRead *.c if getfsize(@%) <= 0 | 0read C:\Users\namah\InTheBloom_Library/src/template.c | endif
 
 " tab文字駆逐コマンド
-command! -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
+command -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
 autocmd BufNewFile,BufRead *.c silent! Tabkill
 
 " 自動cindent切り替え

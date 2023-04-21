@@ -1,14 +1,11 @@
-" プラグインマネージャーのやつ(jetpack)
-"let g:jetpack_download_method = 'curl'
-packadd vim-jetpack
-call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1}
-Jetpack 'prabirshrestha/vim-lsp'
-Jetpack 'mattn/vim-lsp-settings'
-Jetpack 'prabirshrestha/asyncomplete.vim'
-Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
-Jetpack 'nathanaelkane/vim-indent-guides'
-call jetpack#end()
+" プラグインマネージャー(vim-plug)
+call plug#begin()
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+call plug#end()
 
 " indentguides
 let g:indent_guides_enable_on_vim_startup=1
