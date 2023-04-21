@@ -5,24 +5,7 @@ cp -f ../vimrc/.vimrc ../vimrc/.vimrc.pluginconfig ~/
 
 # 置換前の文字列と置換後の文字列
 search="LIBRARY_PATH"
-replace=""
-
-search_dir() {
-    local key="/InTheBloom_Library"
-    local dir="$1"
-
-    if [[ "$dir" == *"$key" ]] && [[ -z "$result" ]]; then
-        replace="$dir"
-    fi
-
-    for sub_dir in "$dir"/*/; do
-        if [[ -d "$sub_dir" ]]; then
-            search_dir "$sub_dir"
-        fi
-    done
-}
-
-search_dir "/home"
+replace=$(find /home -type d -name "InTheBloom_Library" -print -quit 2>/dev/null)
 
 # 置換後の文字列が空の場合に付加する文字列
 marker="\""
@@ -30,11 +13,12 @@ marker="\""
 # 元ファイル
 source_file="../vimrc/.vimrc.expandcommands"
 
-# 出力ファイル
-output_file="~/.vimrc.expandcommands"
-
 # ファイル内の文字列を置換して、置換後文字列が空の場合にはマーカーを付加する
-sed "s/$search/$replace/g;/${replace:+\`/!b};/${replace:+\`/i $marker}" "$source_file" > "$output_file"
+if [ -z "$replace" ]; then
+  sed "/$search/ s/^/$marker/" "$source_file" > $HOME/.vimrc.expandcommands
+else
+  sed "s#$search#$replace#g" "$source_file" > $HOME/.vimrc.expandcommands
+fi
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
