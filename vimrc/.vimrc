@@ -30,6 +30,7 @@ set ruler
 set incsearch
 set wildmenu wildmode=list:full
 set ignorecase
+set matchpairs=(:),{:},[:],<:>,=:;
 
 if has('win32') || has('win64')
     set shell=pwsh.exe
