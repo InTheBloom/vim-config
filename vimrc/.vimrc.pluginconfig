@@ -1,10 +1,11 @@
-" プラグインマネージャー(vim-plug)
+" plugin installation(vim-plug)
 call plug#begin()
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'simeji/winresizer'
 call plug#end()
 
 " indentguides
@@ -14,3 +15,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=145 guibg=#a3e4a6
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=151 guibg=#ea9dc6
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
+
+" winresizer
+command! Resize WinResizerStartResize
