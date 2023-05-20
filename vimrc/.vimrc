@@ -1,5 +1,6 @@
 " vim基本設定
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,windows-1252,iso-8859-1
+set fileencodings=utf-8,iso-2022-jp,sjis,euc-jp,windows-1252,iso-8859-1
+set fileencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/.tmp/vimbackup
 set backupdir=~/.tmp/vimbackup
