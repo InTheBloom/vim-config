@@ -60,6 +60,7 @@ let g:netrw_fastbrowse=1
 " ハイライト設定
 if has('win32') || has('win64')
     hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=8
+    hi MatchParen ctermfg=NONE ctermbg=7
 else
     hi CursorLine cterm=NONE term=NONE ctermfg=NONE ctermbg=242
 endif

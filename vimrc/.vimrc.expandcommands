@@ -2,7 +2,7 @@
 autocmd FileType text setlocal textwidth=0
 
 " 拡張子によるテンプレート自動読み込み
-autocmd BufNewFile,BufRead *.c if getfsize(@%) <= 0 | 0read LIBRARY_PATH/src/template.c | endif
+autocmd BufNewFile,BufRead *.c if getfsize(@%) <= 0 | 0read C:\Users\namah\InTheBloom_Library/src/template.c | endif
 
 " tab文字駆逐コマンド
 command -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
@@ -13,7 +13,7 @@ autocmd BufNewFile,BufRead * setlocal nocindent
 autocmd BufNewFile,BufRead *.c setlocal cindent
 
 " 自動ライブラリオープン
-command Lib tabnew | e LIBRARY_PATH/src
+command Lib tabnew | e C:\Users\namah\InTheBloom_Library/src
 
 " LaTeXのオートコンパイル
 function s:_latex(...)
