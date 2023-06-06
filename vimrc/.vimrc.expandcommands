@@ -13,7 +13,7 @@ autocmd BufNewFile,BufRead * setlocal nocindent
 autocmd BufNewFile,BufRead *.c setlocal cindent
 
 " 自動ライブラリオープン
-command Lib tabnew | e C:\Users\namah\InTheBloom_Library/src
+command Lib tabnew | e LIBRARY_PATH
 
 " LaTeXのオートコンパイル
 function s:_latex(...)
