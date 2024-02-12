@@ -1,0 +1,27 @@
+" tab文字駆逐
+command -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
+
+" コード片のディレクトリオープン
+let LIBRARY_PATH = "" " path to directory
+
+if LIBRARY_PATH == ""
+    command Library echo "このコマンドを利用するには、\".vimrc-excmd\"の変数\"LIBRRY_PATH\"を設定してください。"
+else
+    command Library tabnew | e LIBRARY_PATH
+endif
+
+" LaTeXのオートコンパイル
+function s:_latex(...)
+    let open_pdf = a:0 > 0 && a:1 != ''
+    let cmd = '!platex % && platex % && platex % && dvipdfmx %<.dvi'
+    if open_pdf
+        if has('win32') || has('win64')
+            let cmd .= ' && start %<.pdf'
+        else
+            let cmd .= ' && xdg-open %<.pdf'
+        endif
+    endif
+    execute cmd
+endfunction
+
+command -nargs=? Latex call s:_latex(<f-args>)
