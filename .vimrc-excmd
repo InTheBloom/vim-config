@@ -2,12 +2,13 @@
 command -nargs=0 -bar Tabkill silent! %s/\t/    /g | set shortmess+=c | redraw | set shortmess-=c
 
 " コード片のディレクトリオープン
-let LIBRARY_PATH = "" " path to directory
+" 参考 : https://thinca.hatenablog.com/entry/20090312/1236792602
+let VIM_LIBRARY_PATH = '/home/inthebloom/cp/lib/InTheBloom_Library/dlang/src/' " path to directory
 
-if LIBRARY_PATH == ""
-    command Library echo "このコマンドを利用するには、\".vimrc-excmd\"の変数\"LIBRRY_PATH\"を設定してください。"
+if VIM_LIBRARY_PATH == ''
+    command Library echo 'このコマンドを利用するには、\".vimrc-excmd\"の変数\"VIM_LIBRARY_PATH\"を設定してください。'
 else
-    command Library tabnew | e LIBRARY_PATH
+    command Library tabnew | e `=VIM_LIBRARY_PATH`
 endif
 
 " LaTeXのオートコンパイル

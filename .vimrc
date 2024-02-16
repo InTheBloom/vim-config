@@ -5,7 +5,7 @@ set fileencoding=utf-8 " 書き込み時の文字コード
 set fileformats=unix,dos,mac " 改行コードの候補
 
 " 一時ファイル関連
-set directory=. " .swpファイル
+set directory= " .swpファイル
 set nobackup
 set noundofile
 
