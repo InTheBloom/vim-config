@@ -37,6 +37,8 @@ set textwidth=0 " 勝手に改行をオフ
 set incsearch " インクリメントサーチ
 set ignorecase " 検索時の大文字/小文字を同一視
 set matchpairs=(:),{:},[:],<:>
+set matchtime=0
+let loaded_matchparen=1
 
 " netrw設定
 let g:netrw_banner=0
